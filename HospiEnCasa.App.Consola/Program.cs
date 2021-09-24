@@ -6,7 +6,8 @@ namespace HospiEnCasa.App.Consola
 {
     class Program
     {
-        private static IRepositorioPaciente _repoPaciente = new RepositorioPaciente(new Persistencia.AppContext());
+        //private static IRepositorioPaciente _repoPaciente = new RepositorioPaciente(new Persistencia.AppContext());
+        private static IRepositorioPaciente _repoPaciente = new RepositorioPaciente();
 
         static void Main(string[] args)
         {
@@ -20,7 +21,7 @@ namespace HospiEnCasa.App.Consola
         {
             var paciente = new Paciente
             {
-                Nombre = "Raquel",
+                Nombre = "Natalia",
                 Apellidos = "Santos",
                 NumeroTelefono = "7845203",
                 Genero = Genero.Femenino,
@@ -33,12 +34,27 @@ namespace HospiEnCasa.App.Consola
             _repoPaciente.AddPaciente(paciente);
         }
 
-        //private static void BuscarPaciente(int idPaciente)
+        ///private static void BuscarPaciente(int idPaciente)
+        //private static void MostrarPacientes()
+        private static void BuscarPaciente(int idPaciente)
+        {
+            ///var paciente = _repoPaciente.GetPaciente(idPaciente);
+            //var paciente = _repoPaciente.GetPaciente(idPaciente);
+            ///var paciente = _repoPaciente.GetPaciente(idPaciente);
+            ///Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+
+            //var Paciente = _repoPaciente.GetPaciente(idPaciente);
+            //Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);   
+        }
+
+        
         private static void MostrarPacientes()
         {
-            //var paciente = _repoPaciente.GetPaciente(idPaciente);
-            var paciente = _repoPaciente.GetPaciente(idPaciente);
-            Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+            var Pacientes = _repoPaciente.GetAllPacientes();
+            foreach (var paciente in Pacientes)
+            {
+                Console.WriteLine(paciente.Nombre+" "+paciente.Apellidos);
+            }
         }
     }
 }
